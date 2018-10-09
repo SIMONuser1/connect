@@ -1,0 +1,43 @@
+
+  <section class="space-sm">
+    <div class="container align-self-start">
+      <div class="row mb-5">
+          <!--end of col-->
+      </div>
+          <!--end of row-->
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7">
+          <div class="card card-lg text-center">
+            <div class="card-body">
+              <div class="mb-5">
+                <h1 class="h2 mb-2">Oops, you forgot your password!</h1>
+                <span>Sign in &amp; It happens to the best of us.</span>
+              </div>
+              <div class="row no-gutters justify-content-center">
+                <div class="text-left col-lg-8">
+                <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                  <%= f.error_notification %>
+                  <div class="form-group">
+                    <%= f.input :email, required: true, autofocus: true %>
+                  </div>
+                  <div class="text-center mt-3">
+                    <%= f.button :submit, "Send me reset password instructions", class: "btn-primary"  %>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+        <!--end of row-->
+            </div>
+          </div>
+        </div>
+      </div>
+              <!--end of col-->
+      </div>
+          <!--end of row-->
+    </div>
+      <!--end of container-->
+  </section>
+            <!--end of section-->
+
+
+

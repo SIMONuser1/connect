@@ -1,0 +1,28 @@
+<%= simple_form_for @business do |f| %>
+  <%= f.input :name %>
+  <%= f.input :tagline %>
+  <%= f.input :url %>
+  <%= f.input :youtube_url %>
+
+  <!-- convert this to a hash key value selection -->
+  <%= f.input :employees, collection: Business.employees.invert %>
+
+  <!-- below this requires work -->
+  <%= f.input :acq_partners %>
+  <%= f.input :des_partners %>
+
+  <%= f.input :other_acq_partners %>
+  <%= f.input :other_des_partners %>
+
+  <%= f.input :competitors %>
+  <%= f.input :other_competitors %>
+
+  <%= f.input :desired_partnership_types %>
+  <%= f.input :offered_partnership_types %>
+
+  <%= f.input :industries %>
+  <%= f.input :customer_interests %>
+
+  <%= f.button :submit %>
+
+<% end %>

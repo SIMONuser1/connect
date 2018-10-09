@@ -1,0 +1,395 @@
+<section class="bg-white space-sm pb-4">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-auto">
+        <h1 class="h2">Account Settings</h1>
+      </div>
+      <!--end of col-->
+<!--        <div class="col-auto text-right">
+        <a href="#" class="btn btn-success">Upgrade to Pro</a>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- Tabs Menu -->
+<section class="flush-with-above space-0">
+  <div class="bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="notifications-tab" data-toggle="tab" href="#notifications" role="tab" aria-controls="notifications" aria-selected="false">Notifications</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Account Settings -->
+<section class="flush-with-above height-80 d-block">
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="media flex-wrap mb-0 align-items-center">
+              <img alt="Image" src="assets/img/avatar-male-3.jpg" class="avatar avatar-lg mb-3 mb-md-0" />
+              <div class="media-body">
+                <form>
+                  <label class="custom-file mb-2" for="file2">
+                    <input type="file" id="file2" class="custom-file-input height-0">
+                    <span class="btn btn-primary"><i class="icon-upload-to-cloud">&nbsp;</i>Upload</span>
+                  </label>
+                  <div>
+                    <small>For best results, use an image at least 256px by 256px in either .jpg or .png format</small>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row mb-4">
+          <div class="col">
+            <h5>Account Details</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-8 order-md-1">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "row" }) do |f| %>
+              <div class="col-12">
+                <%= f.error_notification %>
+              </div>
+
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="first-name">First Name:
+                    <span class="text-red">*</span>
+                  </label>
+                  <%= f.input :first_name, autofocus: true, label: false, input_html: { class: 'form-control form-control-lg', type: 'text', id: 'first-name' } %>
+                  <!-- <input class="" type="text" name="firstName" value="Alannah" id="first-name" /> -->
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="last-name">Last Name:</label>
+                  <%= f.input :last_name, label: false, input_html: { class: 'form-control form-control-lg', type: 'text', id: 'last-name' } %>
+                  <!-- <input class="form-control form-control-lg" type="text" name="lastName" value="Cunningham" id="last-name" /> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="emailaddress">Email Address:
+                    <span class="text-red">*</span>
+                  </label>
+                  <%= f.input :email, label: false, input_html: { class: 'form-control form-control-lg', type: 'email', id: 'emailaddress' } %>
+                  <!-- <input class="form-control form-control-lg" type="email" name="emailAddress" id="emailaddress"> -->
+                  <!-- <small>Used to log in to your account</small> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="linkedin-url">LinkedIn Url:
+                    <!-- <span class="text-red">*</span> -->
+                  </label>
+                  <%= f.input :linkedin_url, label: false, input_html: { class: 'form-control form-control-lg', type: 'text', id: 'linkedin-url' } %>
+                  <!-- <input class="form-control form-control-lg" type="text" name="userName" id="username" /> -->
+                  <!-- <small>This will be displayed on your public profile</small> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="location">Location:
+                    <!-- <span class="text-red">*</span> -->
+                  </label>
+                  <%= f.input :location, label: false, input_html: { class: 'form-control form-control-lg', type: 'text', id: 'location' } %>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="location">Current Password:
+                    <!-- <span class="text-red">*</span> -->
+                  </label>
+                  <%= f.input :current_password, label: false, placeholder: "We need your current password to confirm your changes", required: false, input_html: { class: 'form-control form-control-lg', type: 'password' } %>
+                  <% f.input :location , id: 'location' %>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <%= f.button :submit, "Update Details", class: 'btn btn-primary' %>
+                  <!-- <button class="btn btn-primary" type="submit" disabled>Save changes</button> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <hr>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="password">New Password:
+                    <!-- <span class="text-red">*</span> -->
+                  </label>
+                  <%= f.input :password, autocomplete: "off", label: false, placeholder: "Leave it blank if you don't want to change it", required: false, input_html: { class: 'form-control form-control-lg', type: 'password', id: 'password' } %>
+
+                  <!-- <input class="form-control form-control-lg" type="email" name="emailAddress" id="emailaddress"> -->
+                  <!-- <small>Used to log in to your account</small> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="password">Password Confirmation:
+                    <!-- <span class="text-red">*</span> -->
+                  </label>
+                  <%= f.input :password_confirmation, autocomplete: "off", label: false, input_html: { class: 'form-control form-control-lg', type: 'password', id: 'password' } %>
+
+                  <!-- <input class="form-control form-control-lg" type="email" name="emailAddress" id="emailaddress"> -->
+                  <!-- <small>Used to log in to your account</small> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <%= f.button :submit, "Update Password", class: 'btn btn-primary' %>
+                  <!-- <button class="btn btn-primary" type="submit" disabled>Save changes</button> -->
+                </div>
+              </div>
+
+              <div class="col-12">
+                <hr>
+              </div>
+
+              <div class="col-12">
+                <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--end of tab pane-->
+
+<!--      <div class="tab-pane fade" id="billing" role="tabpanel" arialabelledby="billing-tab">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col">
+            <h5>Payment Methods</h5>
+          </div> -->
+    <!--       end of col
+        </div>  -->
+        <!--end of row-->
+        <!-- div class="row">
+          <div class="col-12">
+            <form>
+              <table class="table align-items-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Card Type</th>
+                    <th scope="col">Card Number</th>
+                    <th scope="col">Default Payment Method</th>
+                    <th scope="col">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <img alt="Image" src="assets/img/logo-payment-visa.svg" class="avatar avatar-sm" />
+                    </th>
+                    <td>
+                      <span class="d-block">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8372</span>
+                      <small class="text-muted">Exp: 06/22</small>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-radio">
+                        <input id="radio1" name="payment-default" type="radio" class="custom-control-input" checked />
+                        <label class="custom-control-label" for="radio1"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="icon-squared-cross"></i> Remove card</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <img alt="Image" src="assets/img/logo-payment-amex.svg" class="avatar avatar-sm avatar-square" />
+                    </th>
+                    <td>
+                      <span class="d-block">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 1225</span>
+                      <small class="text-muted">Exp: 07/21</small>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-radio">
+                        <input id="radio2" name="payment-default" type="radio" class="custom-control-input">
+                        <label class="custom-control-label" for="radio2"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="icon-squared-cross"></i> Remove card</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-success">Add new card</button>
+            </form>
+          </div>
+          <!end of col-->
+<!--         </div> -->
+        <!--end of row-->
+  <!--     </div>
+      <!end of --> <!-- container-->
+    <!-- </div> -->
+    <!--end of tab pane-->
+    <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-info text-small mb-0" role="alert">
+              <i class="icon-shield"></i>
+              <span>
+                We will never distribute your email address to third parties. Read about email communication in our privacy policy.
+              </span>
+              <a href="#">View privacy policy &rsaquo;</a>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12">
+            <form>
+              <h5 class="mb-4">Notification Preferences</h5>
+              <div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="notify-mention" checked id="notify-mention">
+                  <label class="custom-control-label" for="notify-mention">Someone mentions me</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="notify-request" checked id="notify-follow">
+                  <label class="custom-control-label" for="notify-follow">Someone follows me</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="notify-share" checked id="notify-share">
+                  <label class="custom-control-label" for="notify-share">Someone shares my activty</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="notify-message" checked id="notify-message">
+                  <label class="custom-control-label" for="notify-message">Someone messages me</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="notify-adds" checked id="notify-adds">
+                  <label class="custom-control-label" for="notify-adds">Someone adds me to a project</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="notify-sales" id="notify-sales">
+                  <label class="custom-control-label" for="notify-sales">Sales and promotions</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary mt-4" disabled>Update preferences</button>
+            </form>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+        <hr>
+        <div class="row">
+          <div class="col-12">
+            <form>
+              <h5>Notification Frequency</h5>
+              <div>
+                <div class="custom-control custom-radio">
+                  <input id="notify-daily" type="radio" class="custom-control-input" value="notify-daily" name="notify-frequency">
+                  <label class="custom-control-label" for="notify-daily">Daily</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-radio">
+                  <input id="notify-weekly" type="radio" class="custom-control-input" value="notify-weekly" name="notify-frequency" checked>
+                  <label class="custom-control-label" for="notify-weekly">Weekly</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-radio">
+                  <input id="notify-monthly" type="radio" class="custom-control-input" value="notify-monthly" name="notify-frequency">
+                  <label class="custom-control-label" for="notify-monthly">Monthly</label>
+                </div>
+              </div>
+              <div>
+                <div class="custom-control custom-radio">
+                  <input id="notify-never" type="radio" class="custom-control-input" value="notify-never" name="notify-frequency">
+                  <label class="custom-control-label" for="notify-never">Never</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary mt-4" disabled>Update frequency</button>
+            </form>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </div>
+  </div>
+  <!--end of tabs content-->
+</section>
+
+
+
+<% simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <% f.error_notification %>
+
+  <div class="form-inputs">
+    <% f.input :email, required: true, autofocus: true %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <% resource.unconfirmed_email %></p>
+    <% end %>
+
+    <% f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+    <% f.input :password_confirmation, required: false %>
+  </div>
+
+  <div class="form-actions">
+    <% f.button :submit, "Update" %>
+  </div>
+<% end %>
+
+<% link_to "Back", :back %>
+
+
+
+
+

@@ -1,0 +1,67 @@
+<% @suggestions.each do |suggestion|  %>
+  <li class="list-group-item">
+    <div class="media align-items-center">
+      <a href="#" class="mr-4">
+          <%= cl_image_tag suggestion.suggested_business.photo, class: 'rounded avatar avatar-lg' %>
+      </a>
+      <div class="media-body">
+        <div class="d-flex justify-content-between mb-2">
+          <div>
+            <%= link_to business_path(suggestion.suggested_business) do %>
+              <h4><%= suggestion.suggested_business.name %></h4>
+            <% end %>
+            <span><%= suggestion.suggested_business.description.to_s[0...80] %>...</span>
+          </div>
+          <div class="dropdown">
+              <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="SidekickButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-h"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="SidekickButton">
+                  <a class="dropdown-item" href="#">Save</a>
+                  <a class="dropdown-item" href="#">Share</a>
+                  <a class="dropdown-item" href="#">Comment</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Report</a>
+              </div>
+          </div>
+        </div>
+          <% suggestion.suggested_business.customer_skills_match(current_user.business).first(5).each do |match|  %>
+            <span class="badge badge-light badge-pill mb-2" href="#"><%= match %></span>
+          <% end %>
+        <div class="text-small">
+            <ul class="list-inline">
+                <li class="list-inline-item"><!-- <i class="fas fa-hand-holding-heart"> </i>-->
+                <% if current_user.business.match_rating_with(suggestion.suggested_business) == "Great Match" %>
+                  <span class="badge badge-success badge-pill">
+                    <strong>
+                      <%= current_user.business.match_rating_with(suggestion.suggested_business) %>
+                    </strong>
+                  </span>
+                <% elsif current_user.business.match_rating_with(suggestion.suggested_business) == "Good Match" %>
+                  <span class="badge badge-primary badge-pill">
+                    <strong>
+                      <%= current_user.business.match_rating_with(suggestion.suggested_business) %>
+                    </strong>
+                  </span>
+                <% elsif current_user.business.match_rating_with(suggestion.suggested_business) == "Average Match" %>
+                  <span class="badge badge-warning badge-pill">
+                    <strong>
+                      <%= current_user.business.match_rating_with(suggestion.suggested_business) %>
+                    </strong>
+                    </span>
+                <% else %>
+                  <span class="badge badge-danger badge-pill">
+                    <strong>
+                      <%= current_user.business.match_rating_with(suggestion.suggested_business) %>
+                    </strong>
+                  </span>
+                <% end %>
+                <li class="list-inline-item">|</li>
+                </li>
+                <li class="list-inline-item"><!-- <i class="fas fa-eye"></i> --> <%= current_user.business.who_clicked_who(suggestion.suggested_business) %></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+<% end %>

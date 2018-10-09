@@ -1,0 +1,214 @@
+<div class="main-container">
+  <%= cloudinary_js_config %>
+  <section>
+    <div class="container">
+      <%= form_tag(businesses_path, method: "post", multipart: true, id: 'new-business-form', class: 'row justify-content-around wizard') do %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <ul class="col-12 col-md-auto nav nav-tabs flex-md-column justify-content-between justify-content-md-start">
+        <li><a href="#first" class="">Step 1</a>
+        </li>
+        <li><a href="#second" class="">Step 2</a>
+        </li>
+        <li><a href="#third" class="">Step 3</a>
+        </li>
+        <li><a href="#fourth" class="">Step 4</a>
+        </li>
+        <li><a href="#fifth" class="">Step 5</a>
+        </li>
+      </ul>
+      <!--end of col-->
+      <div class="col col-lg-9 tab-content">
+        <div id="first">
+          <div class="row align-items-center mb-5">
+            <div class="col-12 col-md-7">
+              <h6 class="title-decorative">Step One</h6>
+              <h3 class="h1">Let's create your Company together!</h3>
+              <span class="lead">Try fill in as much as possible. Dont stress though, you can always come back and edit information regarding your Company later on.</span>
+            </div>
+            <!--end of col-->
+            <div class="col-12 col-md-5">
+              <!-- <img alt="Image" src="assets/img/graphic-man-box.svg" class="w-100" /> -->
+              <%= image_tag "img/graphic-man-box.svg", class: "w-100" %>
+            </div>
+            <!--end of col-->
+          </div>
+          <!--end of row-->
+          <!-- <form> -->
+            <div class="form-row form-group">
+              <div class="col">
+                <!-- <%= label_tag(:name, "Company Name:") %> -->
+                <%= text_field_tag(:name, nil, placeholder: "Company Name", class: "form-control form-control-lg") %>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <%= text_field_tag(:tagline, nil, placeholder: "Company Tagline", class: "form-control form-control-lg") %>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <!-- <%= label_tag(:url, "Company URL:") %> -->
+                <%= text_field_tag(:url, nil, placeholder: "Your Business Website URL", class: "form-control form-control-lg") %>
+              </div>
+              <div class="col">
+                 <% label_tag(:photo, "Company Logo:") %>
+                 <%= cl_upload_tag(:photo) %>
+                 <%= hidden_field_tag :photo_cache %>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <%= select_tag(:employees, options_for_select(Business.employees.values), include_blank: "Number of employees", class: "form-control form-control-lg") %>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <%= text_field_tag(:youtube_url, nil, placeholder: "Company youtube video url", class: "form-control form-control-lg") %>
+              </div>
+            </div>
+            <!-- </form> -->
+            <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+          </div>
+          <div id="second">
+            <div class="row align-items-center mb-5">
+              <div class="col-12 col-md-7">
+                <h6 class="title-decorative">Step Two</h6>
+                <h3 class="h1">Tell us about your Partnerships</h3>
+                <span class="lead">We would like to know about you. Information shared on this page is not Public and will not be shared with other Users. This way, your partnerships will not be visible. </span>
+                <small>Please note, your existing partnerships and compeititors will not be shown on your public profile. This is your confidential information.</small>
+              </div>
+              <!--end of col-->
+              <div class="col-12 col-md-4">
+                <!-- <img alt="Image" src="assets/img/graphic-woman-writing-2.svg" class="w-100"  -->
+                <%= image_tag "img/graphic-woman-writing-2.svg", class: "w-100" %>
+              </div>
+              <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="form-row form-group">
+              <div class="col">
+                <%= text_field_tag(:acq_partners, nil, placeholder: "Who are your Existing Partnerships with?", class: "form-control form-control-lg") %>
+                <small>Please separate with commas</small>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <%= text_field_tag(:des_partners, nil, placeholder: "Who would you like to partner with?", class: "form-control form-control-lg") %>
+                <small>Please separate with commas</small>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <%= text_field_tag(:other_competitors, nil, placeholder: "Who are your Competitors?", class: "form-control form-control-lg") %>
+                <small>Please separate with commas</small>
+              </div>
+            </div>
+            <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+          </div>
+          <div id="third">
+            <div class="row align-items-center mb-5">
+              <div class="col-12 col-md-7">
+                <h6 class="title-decorative">Step Three</h6>
+                <h3 class="h1">Choose Partnerships Desired and Offered</h3>
+                <span class="lead">Select some of the options below to personalise your suggested companies</span>
+              </div>
+              <!--end of col-->
+              <div class="col-12 col-md-5">
+                <!-- <img alt="Image" src="assets/img/graphic-man-computer.svg" class="w-100" /> -->
+                <%= image_tag "img/graphic-man-box.svg", class: "w-100" %>
+              </div>
+              <!--end of col-->
+              <div class="form-row form-group">
+                <div class="col">
+                  <%= label_tag(:desired_partnership_types, "What type partnerships do you want to make?") %>
+                  <% Business::PARTNERSHIP_TYPES.each do |key, p_type| %>
+                  <br>
+                  <%= check_box_tag "desired_partnership_types[]", key, false, id: "des_#{key}" %>
+                  <%= label_tag "des_#{key}", p_type %>
+                  <% end %>
+                </div>
+                <div class="col">
+                  <%= label_tag(:offered_partnership_types, "What type partnerships can you offer?") %>
+                  <% Business::PARTNERSHIP_TYPES.each do |key, p_type| %>
+                  <br>
+                  <%= check_box_tag "offered_partnership_types[]", key, false, id: "off_#{key}" %>
+                  <%= label_tag "off_#{key}", p_type %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!--end of row-->
+            <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+          </div>
+          <div id="fourth">
+            <div class="row align-items-center mb-5">
+              <div class="col-12 col-md-7">
+                <h6 class="title-decorative">Step Four</h6>
+                <h3 class="h1">Choose Company Industries and Customer Interests</h3>
+                <span class="lead">Tell us a little more about your company and your customers</span>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <!-- <img alt="Image" src="assets/img/graphic-woman-writing.svg" class="w-100" /> -->
+                <% image_tag "img/graphic-woman-writing.svg", class: "w-50" %>
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <%= label_tag :industries, "What are your company industries?" %>
+                <%= text_field_tag(:industries, nil, placeholder: "e-Commerce, Retail, Fashion ...", class: "form-control form-control-lg") %>
+                <small>Please separate with commas</small>
+              </div>
+            </div>
+
+            <div class="form-row form-group">
+              <div class="col">
+                <%= label_tag :customer_interests, "What are your customers interested in?" %>
+                <%= text_field_tag(:customer_interests, nil, placeholder: "Beauty, Cosmetics, Fashion ...", class: "form-control form-control-lg") %>
+
+               <!--  Here is the HTML for the Search container  -->
+<!--                 <div class="aa-input-container" id="form-control form-control-lg">
+                    <input type="search" id="aa-search-input-two" class="form-control form-control-lg" placeholder="Search for Customer Interests" name="search" autocomplete="off" />
+                </div> -->
+                <!-- End of the HTML for the Search container  -->
+                <small>To add a new Tag, Press Enter</small>
+              </div>
+            </div>
+            <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+            <!--end of col-->
+            <!--end of row-->
+          </div>
+          <div id="fifth">
+            <div class="row align-items-center mb-5">
+              <div class="col-12 col-md-6">
+                <h6 class="title-decorative">Step Five</h6>
+                <h3 class="h1">You're all set</h3>
+                <span class="lead">We've set up your account and some basic details, now let's move on to your dashboard</span>
+                <button type="submit" class="btn btn-success btn-lg">Show me my suggestions</button>
+              </div>
+              <!--end of col-->
+              <div class="col-12 col-md-6">
+                <!-- <img alt="Image" src="assets/img/graphic-woman-writing.svg" class="w-100" /> -->
+                <%= image_tag "img/graphic-woman-writing.svg", class: "w-100" %>
+              </div>
+              <!--end of col-->
+            </div>
+            <!--end of row-->
+          </div>
+        </div>
+        <!--end of col-->
+        <% end %>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    <!--end of section-->
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      if($.fn.cloudinary_fileupload !== undefined) {
+        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+      }
+    });
+  </script>

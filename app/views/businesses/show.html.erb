@@ -1,0 +1,35 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="space"></div>
+<div class="main-container">
+  <section class="bg-white space-sm">
+    <%= render 'shared/show_header' %>
+    <!--end of container-->
+  </section>
+            <!--end of section-->
+  <section class="space-sm">
+      <div class="container">
+          <div class="row justify-content-between">
+            <div class="col-12 col-md-8 col-lg-7">
+              <%= render 'shared/show_video' %>
+                <!--end of video cover-->
+              <%= render 'shared/show_business_description' %>
+                <hr>
+              <%= render 'shared/show_your_competitors_view' %>
+            </div>
+              <!--end of col-->
+              <div class="col-12 col-md-4">
+                  <!-- end card -->
+                <%= render 'shared/show_quick_stats' %>
+                <%= render 'shared/show_people_to_contact' %>
+                  <!-- end card -->
+                <%= render 'shared/show_people_also_view' %>
+              <!--end of col-->
+              <%= render 'shared/notes' %>
+
+              </div>
+          <!--end of row-->
+      </div>
+      <!--end of container-->
+  </section>
+            <!--end of section-->
+</div>

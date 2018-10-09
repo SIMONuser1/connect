@@ -1,0 +1,11 @@
+<% @business.users.each do |list| %>
+  <li>
+    <%= link_to list.linkedin_url, class: "media", target: "_blank" do %>
+      <%= display_avatar(list) %>
+      <div class="media-body">
+        <span class="h6 mb-0"><%= list.full_name %></span>
+        <span class="text-muted"><%= list.location %></span>
+      </div>
+    <% end %>
+  </li>
+<% end %>

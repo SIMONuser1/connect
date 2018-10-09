@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header bg-secondary d-flex justify-content-between">
+        <h6>Notes about <%= @business.name %></h6>
+    </div>
+    <ul class="list-group list-group-flush list-group-comments">
+      <% current_user.business.business_notes(@business).each do |note| %>
+        <li class="list-group-item py-4">
+            <div class="media">
+              <%= display_avatar(note.author) %>
+                <div class="media-body">
+                    <div class="mb-2">
+                        <span class="h6 mb-0"><%= note.author.full_name %></span>
+                        <span class="text-muted"><%= note.author.location %></span>
+                    </div>
+                    <p><%= note.content %></p>
+                    <div class="d-flex align-items-center">
+                        <small class="text-muted"><%= note.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></small>
+                    </div>
+                </div>
+            </div>
+        </li>
+      <% end %>
+      <li class="list-group-item py-4">
+        <%= simple_form_for @note, url: business_notes_path(@business) do |f| %>
+          <%= f.input :content, label: "<h6>Add a new note</h6>".html_safe, placeholder: 'Your content here...'%>
+          <%= f.button :submit %>
+        <% end %>
+      </li>
+    </ul>
+</div>

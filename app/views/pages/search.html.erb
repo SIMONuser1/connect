@@ -1,0 +1,93 @@
+
+	<nav aria-label="breadcrumb" role="navigation" class="bg-primary text-white">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col">
+					<div class="breadcrumb">
+					<h6 class="breadcrumb-item active">Your search for:
+						<span class="font-weight-bold text-white"> <%= @query %> </span>
+					</h6>
+					</div>
+
+				</div>
+				<!--end of col-->
+			</div>
+			<!--end of row-->
+		</div>
+		<!--end of container-->
+	</nav>
+
+	<!--end of section-->
+	<section class="flush-with-above">
+		<div class="container">
+			<div class="row d-none d-sm-block">
+				<div class="col">
+					<div class="d-flex justify-content-between align-items-center mb-4">
+						<div>
+							<span class="text-muted text-small"> <%= @results.count %> Results</span>
+						</div>
+<!-- 						<form class="d-flex align-items-center">
+							<span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+							<select class="custom-select">
+								<option value="alpha">Alphabetical</option>
+								<option value="old-new" selected>Newest</option>
+								<option value="new-old">Oldest</option>
+								<option value="status">Status</option>
+							</select>
+						</form> -->
+					</div>
+				</div>
+			</div>
+			<!--end of row-->
+
+			<div class="row">
+				<div class="col">
+					<table class="table table-borderless table-hover align-items-center">
+						<thead>
+							<tr>
+								<% if @results.count > 0 %>
+									<th scope="col">Name</th>
+									<th scope="col" class="d-none d-sm-table-cell">Customer Interests</th>
+									<th scope="col" class="d-none d-sm-table-cell">Industry</th>
+									<th></th>
+								<% end %>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @results.each do |r| %>
+
+								<tr class="bg-white">
+									<th scope="row">
+										<%= link_to r, class: "media align-items-center" do %>
+                      <%= cl_image_tag r.photo, class: 'avatar rounded avatar-sm' %>
+                      <!-- <img alt="Image" src="assets/img/logo-snapchat.svg" class="avatar rounded avatar-sm" /> -->
+
+											<div class="media-body">
+												<span class="h6 mb-0"><%= r.name %></span>
+												<span class="text-muted"><%= r.business_domain %></span>
+											</div>
+										<% end %>
+									</th>
+									<!-- <td>13/12/2017</td> -->
+									<td class="d-none d-sm-table-cell">
+										<% r.customer_interests.first(3).each do |ci| %>
+											<span class="badge badge-primary"><%= ci.name %></span>
+										<% end %>
+									</td>
+									<td class="d-none d-sm-table-cell">
+										<% r.industries.first(3).each do |i| %>
+											<span class="badge badge-light"><%= i %></span>
+										<% end %>
+									</td>
+									<td></td>
+
+								</tr>
+								<tr class="table-divider"></tr>
+								<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>

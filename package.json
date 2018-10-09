@@ -1,0 +1,22 @@
+{
+  "name": "clique-connect",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.4",
+    "autocomplete.js": "^0.29.0",
+    "bootstrap": "4.0.0",
+    "css-loader": "^0.28.11",
+    "entypo": "^2.1.0",
+    "flickity": "^2.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9",
+    "prismjs": "^1.14.0",
+    "scrollmonitor": "^1.2.4",
+    "smartwizard": "^4.3.1",
+    "smooth-scroll": "^12.1.5",
+    "socicon": "^3.0.5"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}

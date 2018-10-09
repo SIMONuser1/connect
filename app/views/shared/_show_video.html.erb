@@ -1,0 +1,21 @@
+<% if @business.youtube_url.nil? %>
+
+  <p><strong><%= @business.name %></strong> is busy making their Video! When they are finished, it will appear here!</p>
+  <div class="video-cover rounded">
+    <%= image_tag('img/visit.png', class: 'bg-image') %>
+    <div class="embed-responsive embed-responsive-16by9">
+    </div>
+  </div>
+
+<% else %>
+  <!-- <div class="video-cover rounded"> -->
+<!--     <div class="video-play-icon">
+        <i class="fab fa-youtube"></i>
+    </div> -->
+    <div class="embed-responsive embed-responsive-16by9">
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @business.youtube_regex %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  <!-- </div> -->
+  <br>
+<% end %>

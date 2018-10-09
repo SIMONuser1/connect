@@ -1,0 +1,50 @@
+<div class="nav-container" style="min-height: 64px;">
+    <div class="bg-white navbar-light" data-sticky="top" style="max-width: 1440px; top: 0px;">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+              <%= link_to image_tag('img/clique.png', alt: 'Clique Connect'), root_path, class: 'navbar-brand' %>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <%= link_to 'Home', root_path, class: 'nav-link' %>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown">About Us</a>
+                            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+
+                                <a class="dropdown-item" href="#">
+                                    <span class="h6 mb-0">What we do</span>
+                                    <p class="text-small text-muted">Find out about Clique Native</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="componentsDropdown" role="button" data-toggle="dropdown">Our Partners</a>
+                            <div class="dropdown-menu" aria-labelledby="componentsDropdown">
+
+                                <a class="dropdown-item" href="#">
+                                    <span class="h6 mb-0">Clique Labs</span>
+                                    <p class="text-small text-muted">Everyday Influencer Marketplace</p>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <%= link_to 'Sign In', new_user_session_path, :class => 'nav-link' %>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                          <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-success' %>
+                        </li>
+                    </ul>
+
+                </div>
+                <!--end nav collapse-->
+            </nav>
+        </div>
+        <!--end of container-->
+    </div>
+</div>

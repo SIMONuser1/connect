@@ -1,0 +1,6 @@
+meta_product_name: "AIIME"
+meta_title: "AIIME - The Parternship Matching A.I"
+meta_description: "We built AIIME to superceed the linear cognitive processing of the Human brain. In lamens terms, we combine your Business Data, Behavioral Data and Customer Persona data to generate over 2000 data points to help you make the right matches."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@AIIMEio"   # required for Twitter Cards
+facebook_account: "@AIIMEio"

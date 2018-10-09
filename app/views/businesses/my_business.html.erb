@@ -1,0 +1,181 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="space"></div>
+<div class="main-container">
+  <section class="bg-white space-sm">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col">
+          <div class="media align-items-center">
+              <%= cl_image_tag(@business.photo, {class: "rounded avatar avatar-lg"}) %>
+              <div class="media-body">
+                  <h1 class="mb-0"><%= @business.name %></h1>
+                  <h2 class="lead mb-2"><%= @business.tagline.to_s[0...80] %>...</h2>
+                  <div class="d-flex align-items-center">
+                     <div class="text-small">
+                         <ul class="list-inline">
+                             <li class="list-inline-item"><i class="fas fa-hand-holding-heart"></i> Match Rate: 100%
+                            </li>
+                             <li class="list-inline-item"><i class="fas fa-eye"></i> Who clicked: You did, silly! It's your profile.<li>
+                         </ul>
+                     </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <!--end of col-->
+        <div class="col-auto">
+          <div class="btn-group mb-2">
+            <%= link_to edit_business_path(@business) do %>
+              <button type="button" class="btn btn-success btn-lg">Edit my Profile</button>
+            <% end %>
+          </div>
+        </div>
+        <!--end of col-->
+      </div>
+    </div>
+    <!--end of container-->
+  </section>
+<!--end of section-->
+  <section class="space-sm">
+      <div class="container">
+          <div class="row justify-content-between">
+            <div class="col-12 col-md-8 col-lg-7">
+              <% if @business.youtube_url.nil? || @business.youtube_url.empty? %>
+                <p><strong><%= @business.name %>!</strong> You havn't given us a YouTube video URL!</p>
+                <p>It will appear here instead of our artwork. A Video is great for giving propsective customers a chance to see what your Business is about! </p>
+                <div class="video-cover rounded">
+                  <%= image_tag('img/visit.png', class: 'bg-image') %>
+                  <div class="embed-responsive embed-responsive-16by9">
+                  </div>
+                </div>
+
+              <% else %>
+                <div class="video-cover rounded">
+                  <div class="video-play-icon">
+                      <i class="fab fa-youtube"></i>
+                  </div>
+                  <div class="embed-responsive embed-responsive-16by9">
+
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @business.youtube_regex %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  </div>
+                </div>
+              <% end %>
+
+                <!--end of video cover-->
+              <article>
+                <h6>My Industries:</h6><br>
+                <% if current_user.business.industries_match(@business).empty? %>
+                  <span class="badge badge-secondary">No Industry Matches</span>
+                <% else %>
+                  <% current_user.business.industries_match(@business).each do |list| %>
+                    <span class="badge badge-secondary"><%= list %></span>
+                  <% end %>
+                <% end %>
+
+              </article>
+              <article>
+                <h6>My Customer Interests:</h6><br>
+                <% if current_user.business.customer_skills_match(@business).empty? %>
+                  <span class="badge badge-secondary">No Customer Skill Matches</span>
+                <% else %>
+                  <% current_user.business.customer_skills_match(@business).each do |list| %>
+                  <span class="badge badge-secondary"><%= list %></span>
+                  <% end %>
+                <% end %>
+
+              </article>
+
+              <article>
+                <h5 class="mb-4">What <%= @business.name %> does</h5>
+                <p>
+                  <%= @business.description %>
+                </p>
+              </article>
+                <hr>
+              <div class="col">
+                <div class="card card-sm">
+                  <div class="card-header d-flex bg-secondary justify-content-between align-items-center">
+                    <div>
+                      <h6>Businesses your Competitors View</h6>
+                    </div>
+                  </div>
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                      <div class="media align-items-center">
+                        <a href="#" class="mr-4">
+                        </a>
+                        <div class="media-body">
+                          <div class="d-flex justify-content-between mb-2">
+                            <div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+
+                </ul>
+                </div>
+              </div>
+
+            </div>
+              <!--end of col-->
+              <div class="col-12 col-md-4">
+                  <!-- end card -->
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-text-document mr-1"></i>Mutual Views: 0</div>
+
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-edit mr-1"></i>Mutual Skills: 0 </div>
+
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-thumbs-up mr-1"></i>Matched Interests: 0</div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <span class="h6">Contacts at this Company</span>
+                      </div>
+
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled list-spacing-sm">
+                        <% @business.users.each do |list| %>
+                          <li>
+                            <a class="media">
+                              <%= display_avatar(list) %>
+                              <div class="media-body">
+                                <span class="h6 mb-0"><%= list.full_name %></span>
+                                <span class="text-muted"><%= list.location %></span>
+                              </div>
+                            </a>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                </div>
+                  <!-- end card -->
+              <!--end of col-->
+              </div>
+          <!--end of row-->
+      </div>
+      <!--end of container-->
+  </section>
+            <!--end of section-->
+</div>

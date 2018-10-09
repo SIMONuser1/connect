@@ -1,0 +1,20 @@
+<% current_user.business.remove_self_from_list(business.also_clicked).each do |list| %>
+  <li>
+    <div class="media">
+        <%= cl_image_tag list.photo, class: 'avatar avatar-square rounded mr-3' %>
+      <div class="media-body">
+        <%= link_to business_path(list) do %>
+          <span class="h6"><%= list.name %></span>
+        <% end %>
+        <span class="badge badge-secondary"><%= current_user.business.industries_match(list).first %></span>
+        <div class="text-muted">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <small><i class="fas fa-hand-holding-heart"> </i> <%= current_user.business.match_rating_with(list) %></small>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+<% end %>

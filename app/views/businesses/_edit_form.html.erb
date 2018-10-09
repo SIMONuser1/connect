@@ -1,0 +1,111 @@
+<section class="flush-with-above height-80 d-block">
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+<div class="container">
+  <%= cloudinary_js_config %>
+  <section>
+    <%= form_tag(business_path(business), method: "patch", multipart: true, id: 'edit-business-form') do %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="form-row form-group">
+            <div class="col">
+               <p>Current Logo</p>
+               <%= cl_image_tag(business.photo, {class: "rounded avatar avatar-lg"}) %>
+            </div>
+            <div class="col">
+               <%= label_tag(:photo, "Update Logo:") %>
+               <%= cl_upload_tag(:photo) %>
+               <%= hidden_field_tag :photo_cache %>
+            </div>
+          </div>
+          <div class="form-row form-group">
+            <div class="col">
+              <%= label_tag(:name, "Company Name:") %>
+              <%= text_field_tag(:name, nil, value: business.name, class: "form-control form-control-lg") %>
+            </div>
+            <div class="col">
+              <%= label_tag(:tagline, "Company Tagline:") %>
+              <%= text_field_tag(:tagline, nil, value: business.tagline, class: "form-control form-control-lg") %>
+            </div>
+            <div class="col">
+              <%= label_tag(:url, "Company URL:") %>
+              <%= text_field_tag(:url, nil, value: business.url, class: "form-control form-control-lg") %>
+            </div>
+          </div>
+
+          <div class="form-row form-group">
+            <div class="col">
+              <%= label_tag(:employees, "Number of Employees:") %>
+              <%= select_tag(:employees, options_for_select(Business.employees.invert, business.employees), class: "form-control form-control-lg") %>
+            </div>
+            <div class="col">
+              <%= label_tag(:employees, "Youtube url:") %>
+              <%= text_field_tag(:youtube_url, nil, value: business.youtube_url, class: "form-control form-control-lg") %>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <%= label_tag(:acq_partners, "Existing Partnerships:") %>
+              <%= text_field_tag(:acq_partners, nil, value: business.partnerships.acquired.map{ |p_ship| p_ship.partner.name }.join(', '), class: "form-control form-control-lg") %>
+              <small>Please separate with commas</small>
+          </div>
+
+          <div class="form-group">
+              <%= label_tag(:des_partners, "Desired Partnerships:") %>
+              <%= text_field_tag(:des_partners, nil, value: business.partnerships.desired.map{ |p_ship| p_ship.partner.name }.join(', '), class: "form-control form-control-lg") %>
+              <small>Please separate with commas</small>
+          </div>
+
+          <div class="form-group">
+              <%= label_tag(:other_competitors, "Competitors:") %>
+              <%= text_field_tag(:other_competitors, nil, value: (business.competitors.map(&:name)+business.other_competitors).join(', '), class: "form-control form-control-lg") %>
+              <small>Please separate with commas</small>
+          </div>
+
+        <div class="form-row form-group">
+          <div class="col">
+            <%= label_tag(:desired_partnership_types, "Partnership Types Desired:") %>
+            <% Business::PARTNERSHIP_TYPES.each do |key, p_type| %>
+            <br>
+            <%= check_box_tag "desired_partnership_types[]", key, business.desired_partnership_types.include?(key.to_s), id: "des_#{key}" %>
+            <%= label_tag "des_#{key}", p_type %>
+            <% end %>
+          </div>
+          <div class="col">
+            <%= label_tag(:offered_partnership_types, "Partnership Types Offered:") %>
+            <% Business::PARTNERSHIP_TYPES.each do |key, p_type| %>
+            <br>
+            <%= check_box_tag "offered_partnership_types[]", key, business.offered_partnership_types.include?(key.to_s), id: "off_#{key}" %>
+            <%= label_tag "off_#{key}", p_type %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row form-group">
+          <div class="col">
+            <%= label_tag :industries, "Company Industries" %>
+            <%= text_field_tag(:industries, nil, value: business.industries.join(', '), class: "form-control form-control-lg") %>
+            <small>Please separate with commas</small>
+          </div>
+        </div>
+
+        <div class="form-row form-group">
+          <div class="col">
+            <%= label_tag :customer_interests, "Customer Interests" %>
+            <%= text_field_tag(:customer_interests, nil, value: business.customer_interests.map(&:name).join(', '), class: "form-control form-control-lg") %>
+            <small>Please separate with commas</small>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success btn-lg">Update Business</button>
+      </div>
+    <!-- form end -->
+    <% end %>
+  </section>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    if($.fn.cloudinary_fileupload !== undefined) {
+      $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    }
+  });
+</script>

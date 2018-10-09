@@ -1,0 +1,25 @@
+<section class="height-70">
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="card card-lg text-center">
+                <div class="card-body">
+                    <i class="icon-add-to-list display-4 opacity-20"></i>
+                    <h1 class="h5">AIIME is Smart!</h1>
+                    <p>We see that your Business is: <strong><%= user_business.name %></strong></p><br>We have Assigned <strong><%= user_business.name %></strong> as your Profile. This will save you the effort of setting it up manually.</p><p> Happy Partnering!</p>
+
+                    <%= link_to assign_business_path(business: @user_business) do%>
+                      <div class="btn btn-success">
+                        Let's start!
+                      </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <!--end of col-->
+    </div>
+    <!--end of row-->
+  </div>
+</section>
+
+

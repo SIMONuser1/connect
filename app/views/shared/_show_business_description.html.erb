@@ -1,0 +1,29 @@
+<article>
+  <h6>Your Industry matches with <%= @business.name %>:</h6><br>
+  <% if current_user.business.industries_match(@business).empty? %>
+    <span class="badge badge-secondary">No Industry Matches</span>
+  <% else %>
+    <% current_user.business.industries_match(@business).each do |list| %>
+      <span class="badge badge-secondary"><%= list %></span>
+    <% end %>
+  <% end %>
+
+</article>
+<article>
+  <h6>Your Customer Interest matches with <%= @business.name %>:</h6><br>
+  <% if current_user.business.customer_skills_match(@business).empty? %>
+    <span class="badge badge-secondary">No Customer Skill Matches</span>
+  <% else %>
+    <% current_user.business.customer_skills_match(@business).each do |list| %>
+    <span class="badge badge-secondary"><%= list %></span>
+    <% end %>
+  <% end %>
+
+</article>
+
+<article>
+  <h5 class="mb-4">What <%= @business.name %> does</h5>
+  <p>
+    <%= @business.description %>
+  </p>
+</article>

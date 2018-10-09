@@ -1,0 +1,129 @@
+<section class="space-sm">
+  <div class="container">
+		<!--end of row-->
+	<div class="row flex-md-row card card-lg">
+	  <div class="col-12 col-md-7 card-body bg-secondary">
+		<div class="text-center mb-5">
+		  <h1 class="h2 mb-2">Sign Up &amp; Find your Tribe </h1>
+
+		</div>
+	  <div class="row justify-content-center">
+	  <div class="col-12 col-lg-9">
+		<div>
+		  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+			<%= f.error_notification %>
+
+			<div class="form-row form-group">
+			  <div class="col">
+				<%= f.input :avatar, input_html: {class: 'custom-file'} %>
+				<%= f.input :avatar_cache, as: :hidden %>
+			  </div>
+			</div>
+
+			<div class="form-row form-group">
+				<div class="col">
+					<%= f.input :first_name, required: false, autofocus: true, placeholder: "Elon" %>
+				</div>
+			</div>
+
+			<div class="form-row form-group">
+				<div class="col">
+					<%= f.input :last_name, required: false, placeholder: "Musk" %>
+				</div>
+			</div>
+
+			<div class="form-row form-group">
+				<div class="col">
+					<%= f.input :email, required: true, label: "Business Email", placeholder: "elon@spacex.com"  %>
+				</div>
+			</div>
+
+			<div class="form-row form-group">
+				<div class="col">
+					<%= f.input :linkedin_url, required: false, placeholder: "https://www.linkedin.com/in/elonmusk/" %>
+				</div>
+			</div>
+
+			<div class="form-row form-group">
+			  <div class="col">
+					<%= f.input :password, required: true, placeholder: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+			  </div>
+			</div>
+			<div class="form-row form-group">
+				<div class="col">
+					<%= f.input :password_confirmation, required: true %>
+				</div>
+			</div>
+			<div class="form-row form-group">
+				<div class="col">
+					<%= f.button :submit, "Sign up" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="text-center">
+				<span class="text-small text-muted">By clicking 'Sign Up' you agree to our <a href="#">Terms</a>, <a href="#">Privacy Policy</a>&nbsp;and <a href="#">Security Policy</a>
+				</span>
+			</div>
+
+		</div>
+	  </div>
+	</div>
+  </div>
+			<!--end of col-->
+  <div class="col-12 col-md-5 card-body">
+	  <div>
+		  <div class="mb-5 text-center">
+			  <h3 class="h2 mb-2">Features &amp; Benefits</h3>
+			  <span>Our Beta is currently free for the first 1000 Users</span>
+		  </div>
+		  <ul class="list-unstyled list-spacing-sm mb-5 ">
+			  <li class="row">
+				  <div class="col-2 col-md-1"><i class="icon-check h5 text-muted"></i>
+				  </div>
+				  <div class="col-10">Cognitive Computing Engine creating over 20,000 datapoints per 100 Businesses.</div>
+			  </li>
+			  <li class="row align-items-center">
+				  <div class="col-2 col-md-1"><i class="icon-check h5 text-muted"></i>
+				  </div>
+				  <div class="col-10">Detailed View on your Businesses appearance in Search Results.</div>
+			  </li>
+			  <li class="row">
+				  <div class="col-2 col-md-1"><i class="icon-check h5 text-muted"></i>
+				  </div>
+				  <div class="col-10">Tailored Partnership Reccomendations for your Business.</div>
+			  </li>
+			  <li class="row align-items-center">
+				  <div class="col-2 col-md-1"><i class="icon-check h5 text-muted"></i>
+				  </div>
+				  <div class="col-10">Stakeholder Identification for quick Initial Meeting Identification.</div>
+			  </li>
+		  </ul>
+
+		  <div class="card card-sm box-shadow text-left">
+			  <div class="card-body p-4">
+				  <div class="media">
+
+					  <div class="media-body">
+						  <p class="mb-1 text-small">
+							  We hope you like Clique Native. AIME will guide you through the set up process from here.
+						  </p>
+
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+
+	  </div>
+  </div>
+  <!--end of col-->
+</div>
+		<!--end of row-->
+<div class="text-center">
+  <span class="text-small">Already have an account? <%= render "devise/shared/links" %>
+  </span>
+	</div>
+  </div>
+	<!--end of container-->
+</section>
+  <!--end of section-->
+

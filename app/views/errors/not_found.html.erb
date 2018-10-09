@@ -1,0 +1,38 @@
+<div class="main-container">
+    <section class="fullwidth-split">
+        <div class="container-fluid">
+            <div class="row no-gutters height-100">
+                <div class="col-12 col-sm-5 col-lg-6 order-sm-2 fullwidth-split-image bg-white d-flex justify-content-center align-items-center">
+                    <%= image_tag('img/graphic-bg-clouds-4.png', alt: 'clouds', class: 'bg-image position-absolute') %>
+                  <%= image_tag('img/sanfran.svg', alt: 'Sanfran', class: 'col-8') %>
+                </div>
+                <!--end of col-->
+                <div class="col-12 col-sm-7 col-lg-6 order-sm-1 fullwidth-split-text bg-dark text-light">
+                    <div class="col-11 col-lg-9 align-self-center">
+                      <%= link_to image_tag('img/clique.png', alt: 'AIIME'), root_path, class: 'mb-4' %>
+                        <h1 class="display-4">Oops, this page doesnt Exist</h1>
+                        <form>
+                            <div class="form-row">
+
+                                <!--end of col-->
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                      <%= link_to suggestions_path do %>
+                                      <button type="button" class="btn-block btn-lg btn-primary" style="color:#ffffff";>Go Back</button>
+                                      <% end %>
+
+                                    </div>
+                                </div>
+                                <!--end of col-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+</div>

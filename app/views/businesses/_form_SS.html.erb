@@ -1,0 +1,184 @@
+  <section>
+      <div class="container">
+          <form class="row justify-content-around wizard">
+              <ul class="col-12 col-md-auto nav nav-tabs flex-md-column justify-content-between justify-content-md-start">
+                  <li><a href="#first" class=""><i class="fas fa-bullseye"></i>
+
+Step  1</a>
+                  </li>
+                  <li><a href="#second" class=""><i class="fas fa-bullseye"></i>
+
+Step 2</a>
+                  </li>
+                  <li><a href="#third" class=""><i class="fas fa-bullseye"></i>
+
+Step 3</a>
+                  </li>
+                  <li><a href="#fourth" class=""><i class="fas fa-bullseye"></i>
+
+Step 4</a>
+                  </li>
+              </ul>
+              <%= simple_form_for(business, {url: businesses_path, method: :post, authenticity_token: false}) do |f| %>
+                <%= f.error_notification %>
+              <!--end of col-->
+              <div class="col col-lg-9 tab-content">
+                  <div id="first">
+                      <div class="row align-items-center mb-5">
+                          <div class="col-12 col-md-7">
+                              <h6 class="title-decorative">Step One</h6>
+                              <h3 class="h1">Let's create your Company together!</h3>
+                              <span class="lead">Try fill in as much as possible. Dont stress though, you can always come back and edit information regarding your Company later on.</span>
+                          </div>
+                          <!--end of col-->
+                          <div class="col-12 col-md-5">
+                              <img alt="Image" src="/assets/img/man.svg" class="w-100" />
+                          </div>
+                          <!--end of col-->
+                      </div>
+                      <!--end of row-->
+                      <div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                            <!-- [...] -->
+
+                            <%= f.input :photo, input_html: {class: 'custom-file'} %>
+                            <%= f.input :photo_cache, as: :hidden %>
+
+                            </div>
+                          </div>
+                            <!-- [...] -->
+
+                          <div class="form-row form-group">
+                            <div class="col">
+                              <%= f.input :name, placeholder: 'Company Name', input_html: { class: 'orm-control form-control-lg' }%>
+                            </div>
+                          </div>
+                          <div class="form-row form-group">
+                            <div class="col">
+                              <%= f.input :tagline, placeholder: 'Company Tagline', input_html: { class: 'orm-control form-control-lg' }%>
+                            </div>
+                          </div>
+                            <div class="form-row form-group">
+                              <div class="col">
+                                <%= f.input :url, placeholder: 'Your Business Website URL', input_html: { class: 'orm-control form-control-lg' }%>
+                              </div>
+                            </div>
+                          <div class="form-row form-group">
+                              <div class="col">
+                                <%= f.input :industries, placeholder: 'Select your Industries', input_html: { class: 'orm-control form-control-lg' }%>
+
+                              </div>
+                              <div class="col">
+                                  <%= f.input :employees, placeholder: 'Select your Industries', input_html: { class: 'orm-control form-control-lg' }%>
+
+                              </div>
+                          </div>
+
+                          <div class="form-row form-group">
+                              <div class="col">
+                                  <%= f.input :description, placeholder: 'This is where you will input a short description of your Business', input_html: { class: 'orm-control form-control-lg' }%>
+                              </div>
+                          </div>
+                          <div class="form-row form-group">
+                            <div class="col">
+                              <%= f.input :youtube_url, placeholder: 'Does your business have a YouTube Video to help explain what your Company does? If so, Input the URL here', input_html: { class: 'orm-control form-control-lg' }%>
+                            </div>
+                          </div>
+                        </div>
+                      <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+                  </div>
+                  <div id="second">
+                      <div class="row align-items-center mb-5">
+                          <div class="col-12 col-md-7">
+                              <h6 class="title-decorative">Step Two</h6>
+                              <h3 class="h1">Tell us about your Partnerships</h3>
+                              <span class="lead">We would like to know about you. Information shared on this page is not Public and will not be shared with other Users. This way, your partnerships will not be visible. </span>
+                              <small>Please note, your existing partnerships and compeititors will not be shown on your public profile. This is your confidential information.</small>
+                          </div>
+                          <!--end of col-->
+                          <div class="col-12 col-md-4">
+                              <img alt="Image" src="/assets/img/graphic-woman-writing-2.svg" class="w-100" />
+                          </div>
+                          <!--end of col-->
+                      </div>
+                      <!--end of row-->
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <%= f.input :other_partners, placeholder: 'Who are your Existing Partnerships with?', input_html: { class: 'orm-control form-control-lg' }%>
+                        </div>
+                      </div>
+
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <%= f.input :other_competitors, placeholder: 'Who are your Competitors?', input_html: { class: 'orm-control form-control-lg' }%>
+                        </div>
+                      </div>
+
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <%= f.input :desired_partnership_types, placeholder: 'What type partnerships do you want to make?', input_html: { class: 'orm-control form-control-lg' }%>
+                        </div>
+                      </div>
+
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <%= f.input :offered_partnership_types, placeholder: 'What types of Partnerships can you offer?', input_html: { class: 'orm-control form-control-lg' }%>
+                        </div>
+                      </div>
+                      <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+                  </div>
+                  <div id="third">
+                      <div class="row align-items-center mb-5">
+                          <div class="col-12 col-md-7">
+                              <h6 class="title-decorative">Step Three</h6>
+                              <h3 class="h1">Tell us about your Customers</h3>
+                              <span class="lead">Particularly, we want to hear about their interests, what they enjoy, who they are. The more accurate your Customer Persona is, the better we can match you.</span>
+                          </div>
+                          <!--end of col-->
+                          <div class="col-12 col-md-5">
+                              <img alt="Image" src="/assets/img/man.svg" class="w-100" />
+                          </div>
+                          <!--end of col-->
+                      </div>
+                      <!--end of row-->
+                      <div>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Design</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Development</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">VR</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Photography</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">User Experience</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Marketing</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Finance</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Technology</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Software</button>
+                          <button class="btn btn-outline-secondary mb-1" data-toggle="button">Engineering</button>
+                      </div>
+                      <button class="btn btn-success sw-btn-next mt-4" type="button">Next Step</button>
+                  </div>
+                  <div id="fourth">
+                      <div class="row align-items-center mb-5">
+                          <div class="col-12 col-md-6">
+                              <h6 class="title-decorative">Step Four</h6>
+                              <h3 class="h1">You're all set</h3>
+                              <span class="lead">We have set up your Business. When you get to the Dashboard, AIME will have created your initial Matches. As you use Clique, AIME will continue to provide reccomendations based upon how you and every other business interacts on the platform. Let's get started! </span>
+                              <%= f.button :submit %>
+                          </div>
+                          <% end %>
+                          <!--end of col-->
+                          <div class="col-12 col-md-6">
+                              <img alt="Image" src="/assets/img/graphic-woman-writing.svg" class="w-100" />
+                          </div>
+                          <!--end of col-->
+                      </div>
+                      <!--end of row-->
+                  </div>
+              </div>
+              <!--end of col-->
+          </form>
+          <!--end of row-->
+      </div>
+      <!--end of container-->
+  </section>
+            <!--end of section-->
+
